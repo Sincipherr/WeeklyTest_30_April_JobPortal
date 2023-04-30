@@ -1,7 +1,7 @@
 
-# User Management
+# Job Portal
 
-This is a small spring boot project uses CRUD operation to manage users
+This is a small spring boot project is to search job in job portal based on location salary and title using CRUD operation.
 
 
 ## Resource used
@@ -10,9 +10,8 @@ This is a small spring boot project uses CRUD operation to manage users
 
 **Language:** Java
 
-**Dependency:** Spring Boot DevTools , Spring Web
+**Dependency:** Spring Boot DevTools , Spring Web , H2-Database , validation , Spring Boot Starter Data JPA
 
-**Data Structure:** ArrayList
 
 ## Data Flow
 
@@ -23,71 +22,72 @@ This is a small spring boot project uses CRUD operation to manage users
 **Repository** 
 ## API Reference
 
-#### Get all items
+#### Get job based on title
 
 ```http
-  GET /getalluser
+  GET /bytitle/{title}
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `User` | `string` | Return all users |
+| `Job`     | `string` | Return job with the title |
 
-#### POST item
+#### POST Job
 
 ```http
-  POST /addUser
+  POST /addjobs
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `User`      | `string` | Add Individual user |
+| `JOb`     | `string` | Add All jobs |
 
-#### Get Individual user
+#### Get based on location and salary
 
 ```http
-  GET /getUser/{userid}
+  GET /locationbysalary/{location}/{salary}
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `User` | `string` | Return user based on id |
+| `Job`    | `string` | Return job |
 
-#### Delete particular user
+#### Delete job based on salary
 
 ```http
-  DELETE /delete/{userid}
+  DELETE /deletejob/{salary}
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `User` | `string` | delete user |
+| `job`    | `string` | delete job |
 
-#### Update user phone number
+#### Update Job salary
 
 ```http
-  Update /updateUserInfo/{userid}/{phoneNO}
+  Update /updatesalary
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `User` | `string` | Update phoneNO|
+| `Job`     | `Double` | Update salary|
 
 ## Features
 
-- Print All users
-- Add individual user
-- Get user details based on ID
-- Delete user
-- Update user info based on ID
+- Easy to search 
+- Filter based on title , based on location and salary
+- update job on portal based on id
+- Delete job based on salary 
 
+## New in this project
 
-## Lessons Learned
-
-The lesson that i have learned while building the project is importance of dependency injection, with the help of dependency injection I made my code more scalable and decoupled I have created differnet package of each function, because of this my code became scalable.
+- I have used ENUM in this project which will hold the list of job types, we can access the job types based on there names or by the index starts with 0
+- I have used H2 - Database in this project which will create seperate database for this project.
+- I have used Starter Data JPA dependency along with h2 database im able to write custom query to fetch data from database
+- I have used validation on few of the fields.
 
 
 ## Summary
 
-This small springboot project will manage user, Ihave used basic CRUD operation to manage users by getting all user info at once , get individual user based on his ID , Add particular user to the user list, Delete particular user based on ID , Update user info based on ID.
+This small springboot project will is created to search job in job portal, here we can search job based on title location and salary range, and we can add the job to job portal , we can update job using ID , we can filter the jobs based on salary.
 
